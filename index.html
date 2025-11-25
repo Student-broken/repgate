@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLock - Unlock Screen Time with Exercise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1A237E 0%, #311B92 50%, #000000 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #42A5F5, #1976D2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, #FF6F00, #FF8F00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #42A5F5, #1976D2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 30px rgba(66, 165, 245, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(66, 165, 245, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .integration {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(252, 76, 2, 0.1);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .strava-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: #FC4C02;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-links {
+            display: flex;
+justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .privacy-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            line-height: 1.8;
+        }
+
+        .privacy-section h2 {
+            margin-bottom: 20px;
+            color: #42A5F5;
+        }
+
+        .privacy-section p {
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🔒 FitLock</div>
+            <div class="tagline">Your Health, Your Freedom</div>
+        </header>
+
+        <section class="hero">
+            <h1>Earn Screen Time with <span class="highlight">Exercise</span></h1>
+            <p class="subtitle">Transform push-ups and squats into phone time. Stay fit, stay focused.</p>
+            <a href="#download" class="cta-button">Get Started Free</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">💪</div>
+                <h3 class="feature-title">Smart Exercise Tracking</h3>
+                <p class="feature-desc">MLKit vision for push-ups and squats. Better form = more rewards!</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">App Blocking</h3>
+                <p class="feature-desc">Out of credits? Your selected apps get locked until you exercise.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🏃</div>
+                <h3 class="feature-title">Strava Integration</h3>
+                <p class="feature-desc">Sync runs & rides from Strava. 1km = 1 minute of screen time!</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3 class="feature-title">Ad Credit System</h3>
+                <p class="feature-desc">Watch ads to borrow time (with "debt" you must repay later).</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3 class="feature-title">Streaks & Stats</h3>
+                <p class="feature-desc">Track your progress with daily streaks and performance analytics.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <h3 class="feature-title">Midnight Panic Mode</h3>
+                <p class="feature-desc">Reminders at 8 PM and 11 PM if you have outstanding debt.</p>
+            </div>
+        </section>
+
+        <section class="integration">
+            <h2>Powered By</h2>
+            <div class="strava-badge">
+                <span>🚴</span>
+                <span>Strava API</span>
+            </div>
+            <p style="margin-top: 20px; color: rgba(255, 255, 255, 0.7);">
+                Connect your Strava account to automatically earn credits from your outdoor activities
+            </p>
+        </section>
+
+        <section class="privacy-section" id="privacy">
+            <h2>Privacy Policy</h2>
+            <p><strong>Last Updated:</strong> November 24, 2025</p>
+            
+            <h3>Data We Collect</h3>
+            <p>FitLock collects minimal data to provide its core functionality:</p>
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li>Exercise statistics (push-ups, squats, screen time earned)</li>
+                <li>App usage data (only for apps you explicitly block)</li>
+                <li>Strava activity data (distance, duration) when you connect your account</li>
+            </ul>
+
+            <h3>Data Storage</h3>
+            <p>All data is stored locally on your device. Strava activity data is fetched via API and immediately converted to credits - we do not store your Strava activities.</p>
+
+            <h3>Third-Party Services</h3>
+            <p>FitLock integrates with:</p>
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li><strong>Google AdMob:</strong> For optional ad-based credits</li>
+                <li><strong>Strava API:</strong> To sync your outdoor activities (requires your authorization)</li>
+            </ul>
+
+            <h3>Your Rights</h3>
+            <p>You can disconnect Strava at any time from the app settings. All local data can be cleared by uninstalling the app.</p>
+
+            <h3>Contact</h3>
+            <p>For privacy concerns, email: privacy@fitlock.app</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#privacy" class="footer-link">Privacy Policy</a>
+            <a href="#download" class="footer-link">Download</a>
+            <a href="mailto:support@fitlock.app" class="footer-link">Support</a>
+        </div>
+        <p style="color: rgba(255, 255, 255, 0.5);">© 2025 FitLock. All rights reserved.</p>
+    </footer>
+</body>
+</html>
