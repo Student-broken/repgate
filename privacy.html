@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Rep Gate</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <style>
+        /* Exact same styles as terms.html for consistency */
+        :root {
+            --primary-blue: #2979FF;
+            --primary-purple: #651FFF;
+            --accent-orange: #FF6D00;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --cursor-size: 20px;
+            --cursor-outline-size: 40px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- CURSOR --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background-color: white; }
+        .cursor-outline { width: var(--cursor-outline-size); height: var(--cursor-outline-size); border: 1px solid rgba(255, 255, 255, 0.5); }
+
+        /* --- BACKGROUND --- */
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #1A237E 0%, #000000 100%); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+        /* --- HEADER --- */
+        header {
+            padding: 25px 0;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; max-width: 900px;
+            left: 50%; transform: translateX(-50%); top: 0; z-index: 100;
+            mix-blend-mode: difference;
+        }
+        .logo { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 28px; width: auto; }
+        .back-link { color: white; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .back-link:hover { color: var(--accent-orange); transform: translateX(-5px); }
+
+        /* --- CONTENT --- */
+        .legal-hero { padding: 150px 0 60px; text-align: center; }
+        .legal-hero h1 { font-family: 'Outfit', sans-serif; font-size: 48px; margin-bottom: 10px; }
+        .last-updated { color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .legal-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 60px;
+            backdrop-filter: blur(20px);
+            margin-bottom: 100px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            opacity: 0; transform: translateY(30px);
+        }
+
+        .legal-content h2 { font-family: 'Outfit', sans-serif; margin: 40px 0 20px; color: white; font-size: 24px; }
+        .legal-content h2:first-child { margin-top: 0; }
+        .legal-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; font-size: 16px; }
+        .legal-content ul { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; padding-left: 20px; }
+        .legal-content li { margin-bottom: 10px; }
+        .legal-content a { color: var(--primary-blue); text-decoration: none; transition: 0.3s; }
+        .legal-content a:hover { color: var(--accent-orange); }
+
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 13px; }
+        
+        @media (max-width: 768px) {
+            .legal-content { padding: 30px; }
+            .legal-hero h1 { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <canvas id="canvas-container"></canvas>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo hover-target">
+                <img src="icon.png" alt="Logo" class="logo-img"> Rep Gate
+            </a>
+            <a href="index.html" class="back-link hover-target"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </header>
+
+        <section class="legal-hero">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: November 24, 2025</p>
+        </section>
+
+        <section class="legal-content anim-up">
+            <p>This privacy policy applies to the Rep Gate app (hereby referred to as "Application") for mobile devices that was created by Rep Gate Team (hereby referred to as "Service Provider") as an Ad Supported service. This service is intended for use "AS IS".</p>
+
+            <h2>Information Collection and Use</h2>
+            <p>The Application collects information when you download and use it. This information may include information such as:</p>
+            <ul>
+                <li>Your device's Internet Protocol address (e.g. IP address)</li>
+                <li>The pages of the Application that you visit, the time and date of your visit, the time spent on those pages</li>
+                <li>The time spent on the Application</li>
+                <li>The operating system you use on your mobile device</li>
+            </ul>
+
+            <h2>Location Data</h2>
+            <p>The Application does not gather precise information about the location of your mobile device. However, it collects approximate location data to:</p>
+            <ul>
+                <li><strong>Geolocation Services:</strong> Provide features such as personalized content and relevant recommendations.</li>
+                <li><strong>Analytics:</strong> Analyze user behavior to improve the functionality of the Application.</li>
+                <li><strong>Third-Party Services:</strong> Anonymized data may be shared to help optimize our offerings.</li>
+            </ul>
+
+            <h2>User Data & Third Party Access</h2>
+            <p>For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information, including but not limited to Email, userId, device & app information.</p>
+            <p>Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application. We may disclose your information:</p>
+            <ul>
+                <li>As required by law, such as to comply with a subpoena.</li>
+                <li>When we believe in good faith that disclosure is necessary to protect our rights or your safety.</li>
+                <li>With trusted service providers who work on our behalf and have agreed to adhere to this privacy policy.</li>
+            </ul>
+
+            <h2>Data Retention & Deletion</h2>
+            <p>The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like us to delete User Provided Data that you have provided via the Application, please contact us at <a href="mailto:notabot.chat@gmail.com">notabot.chat@gmail.com</a>.</p>
+
+            <h2>Children</h2>
+            <p>The Service Provider does not knowingly collect personally identifiable information from children under the age of 13. If you have reason to believe that a child has provided personally identifiable information to the Service Provider through the Application, please contact us so that we will be able to take the necessary actions.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions regarding privacy while using the Application, please contact the Service Provider via email at <a href="mailto:notabot.chat@gmail.com" class="hover-target">notabot.chat@gmail.com</a>.</p>
+        </section>
+
+        <footer>
+            <p>© 2025 Rep Gate. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Script Stack -->
+    <script>
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(".anim-up", { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.2 });
+
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = `${e.clientX}px`; cursorDot.style.top = `${e.clientY}px`;
+            gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.15, xPercent: -50, yPercent: -50 });
+        });
+        document.querySelectorAll('.hover-target').forEach(t => {
+            t.addEventListener('mouseenter', () => gsap.to(cursorOutline, { width: 60, height: 60 }));
+            t.addEventListener('mouseleave', () => gsap.to(cursorOutline, { width: 40, height: 40 }));
+        });
+
+        // Background Logic
+        const canvas = document.getElementById('canvas-container');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function resize() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; initParticles(); }
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width; this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1; this.baseX = this.x; this.baseY = this.y;
+                this.color = Math.random() > 0.5 ? 'rgba(41, 121, 255, ' : 'rgba(101, 31, 255, '; 
+            }
+            update() {
+                let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < 200) { this.x -= (dx/distance) * ((200-distance)/200) * 2; this.y -= (dy/distance) * ((200-distance)/200) * 2; }
+                else { if (this.x !== this.baseX) this.x -= (this.x - this.baseX)/50; if (this.y !== this.baseY) this.y -= (this.y - this.baseY)/50; }
+                this.baseX += this.vx; this.baseY += this.vy;
+                if (this.baseX < 0) this.baseX = width; if (this.baseX > width) this.baseX = 0;
+                if (this.baseY < 0) this.baseY = height; if (this.baseY > height) this.baseY = 0;
+                this.x += this.vx; this.y += this.vy;
+            }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color + '0.5)'; ctx.fill(); }
+        }
+        function initParticles() { particles = []; let count = (width * height) / 15000; for (let i = 0; i < count; i++) particles.push(new Particle()); }
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update(); particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x; let dy = particles[i].y - particles[j].y; let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 100) { ctx.beginPath(); ctx.strokeStyle = `rgba(100, 100, 255, ${0.1 - dist/1000})`; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); }
+                }
+            }
+            requestAnimationFrame(animateCanvas);
+        }
+        window.addEventListener('resize', resize); window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        resize(); animateCanvas();
+    </script>
+</body>
+</html>
